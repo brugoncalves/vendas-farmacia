@@ -1,10 +1,12 @@
 package br.com.farmacia.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.farmacia.api.repositories.UsuarioRepository;
 import br.com.farmacia.entities.Usuario;
@@ -12,6 +14,7 @@ import br.com.farmacia.services.UsuarioService;
 import br.com.farmacia.services.exceptions.ErroAutenticacaoException;
 import br.com.farmacia.services.exceptions.ValidacaoDeEmailException;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
 	
 	@Autowired
@@ -44,6 +47,15 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public Usuario salvarUsuario(Usuario usuario) {
 		validarEmail(usuario.getEmail());
 		return repository.save(usuario);
+	}
+	
+	public Optional<Usuario> findById(Long id) {
+		return repository.findById(id);
+	}
+	
+	public List<Usuario> findAll(){
+		List<Usuario> list = repository.findAll();
+		return list;
 	}
 
 }
