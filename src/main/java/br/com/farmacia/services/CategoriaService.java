@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.farmacia.api.repositories.CategoriaRepository;
 import br.com.farmacia.entities.Categoria;
+import br.com.farmacia.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -16,6 +17,7 @@ public class CategoriaService {
 	
 	public Categoria findById(Long id) {
 		Optional<Categoria> categoria = repository.findById(id);
-		return categoria.orElse(null);
+		return categoria.orElseThrow( () -> 
+			new ObjectNotFoundException("Objeto não encontrado! ID: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 }
