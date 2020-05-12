@@ -8,18 +8,34 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.farmacia.api.repositories.CategoriaRepository;
+import br.com.farmacia.api.repositories.CidadeRepository;
+import br.com.farmacia.api.repositories.ClienteRepository;
+import br.com.farmacia.api.repositories.EnderecoRepository;
+import br.com.farmacia.api.repositories.EstadoRepository;
 import br.com.farmacia.api.repositories.ProdutoRepository;
 import br.com.farmacia.entities.Categoria;
+import br.com.farmacia.entities.Cidade;
+import br.com.farmacia.entities.Cliente;
+import br.com.farmacia.entities.Endereco;
+import br.com.farmacia.entities.Estado;
 import br.com.farmacia.entities.Produto;
+import br.com.farmacia.entities.enums.TipoCliente;
 
 @SpringBootApplication
 public class VendasFarmaciaApplication implements CommandLineRunner{
 	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private EstadoRepository estadoRepository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendasFarmaciaApplication.class, args);
@@ -65,6 +81,43 @@ public class VendasFarmaciaApplication implements CommandLineRunner{
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
+		
+		Estado est1 = new Estado(null, "São Paulo");
+		Estado est2 = new Estado(null, "Minas Gerais");
+		
+		Cidade cid1 = new Cidade(null, "São Paulo", est1);
+		Cidade cid2 = new Cidade(null, "Franca", est1);
+		Cidade cid3 = new Cidade(null, "Uberaba", est2);
+		
+		est1.getCidades().addAll(Arrays.asList(cid1, cid2));
+		est2.getCidades().addAll(Arrays.asList(cid3));
+		
+		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
+		
+		Cliente cli1 = new Cliente(null, "José Mattos", "jose@gmail.com", "11122233344", TipoCliente.PESSOAFISICA);
+		cli1.getTelefones().addAll(Arrays.asList("16 37205555", "16 983001000"));
+		Cliente cli2 = new Cliente(null, "Maria Diniz", "maria@gmail.com", "22233344455", TipoCliente.PESSOAFISICA);
+		cli2.getTelefones().addAll(Arrays.asList("35 993658888"));
+		Cliente cli3 = new Cliente(null, "Laranja Lima S/A", "laranjalima@gmail.com", "010895411000236", TipoCliente.PESSOAJURIDICA);
+		cli3.getTelefones().addAll(Arrays.asList("11 36020000"));
+		
+		Endereco end1 = new Endereco(null, "Avenida Paulista", "3000", "Sala 31", "Bela Vista", "25000000", cli3, cid1);
+		Endereco end2 = new Endereco(null, "Rua Chile", "1500", null, "Jardim Consolação", "14403000", cli1, cid2);
+		Endereco end3 = new Endereco(null, "Avenida Brasil", "200", null, "Centro", "352000000", cli2, cid3);
+		
+		cli1.getEnderecos().addAll(Arrays.asList(end2));
+		cli2.getEnderecos().addAll(Arrays.asList(end3));
+		cli3.getEnderecos().addAll(Arrays.asList(end1));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3));
+		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
+		
+		
+		
+		
+		
+		
 		
 	}
 
