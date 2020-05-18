@@ -1,4 +1,4 @@
-package br.com.farmacia.api.repositories;
+package br.com.farmacia.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

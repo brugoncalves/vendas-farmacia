@@ -1,4 +1,4 @@
-package br.com.farmacia.api.resources.exceptions;
+package br.com.farmacia.resources.exceptions;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -15,7 +15,6 @@ public class StandardError implements Serializable{
 	private Instant moment;
 	private Integer status;
 	private String error;
-	private String message;
 	private String path;
 	
 	
@@ -24,12 +23,11 @@ public class StandardError implements Serializable{
 	}
 
 
-	public StandardError(Instant moment, Integer status, String error, String message, String path) {
+	public StandardError(Instant moment, Integer status, String error, String path) {
 		super();
 		this.moment = moment;
 		this.status = status;
 		this.error = error;
-		this.message = message;
 		this.path = path;
 	}
 
@@ -61,16 +59,6 @@ public class StandardError implements Serializable{
 
 	public void setError(String error) {
 		this.error = error;
-	}
-
-
-	public String getMessage() {
-		return message;
-	}
-
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 

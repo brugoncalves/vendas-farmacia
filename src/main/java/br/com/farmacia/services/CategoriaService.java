@@ -10,9 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import br.com.farmacia.api.repositories.CategoriaRepository;
 import br.com.farmacia.entities.Categoria;
 import br.com.farmacia.entities.dto.CategoriaDTO;
+import br.com.farmacia.repositories.CategoriaRepository;
 import br.com.farmacia.services.exceptions.DataIntegrityException;
 import br.com.farmacia.services.exceptions.ObjectNotFoundException;
 

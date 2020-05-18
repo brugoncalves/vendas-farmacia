@@ -8,15 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.farmacia.api.repositories.CategoriaRepository;
-import br.com.farmacia.api.repositories.CidadeRepository;
-import br.com.farmacia.api.repositories.ClienteRepository;
-import br.com.farmacia.api.repositories.EnderecoRepository;
-import br.com.farmacia.api.repositories.EstadoRepository;
-import br.com.farmacia.api.repositories.ItemPedidoRepository;
-import br.com.farmacia.api.repositories.PagamentoRepository;
-import br.com.farmacia.api.repositories.PedidoRepository;
-import br.com.farmacia.api.repositories.ProdutoRepository;
 import br.com.farmacia.entities.Categoria;
 import br.com.farmacia.entities.Cidade;
 import br.com.farmacia.entities.Cliente;
@@ -30,6 +21,15 @@ import br.com.farmacia.entities.Pedido;
 import br.com.farmacia.entities.Produto;
 import br.com.farmacia.entities.enums.EstadoPagamento;
 import br.com.farmacia.entities.enums.TipoCliente;
+import br.com.farmacia.repositories.CategoriaRepository;
+import br.com.farmacia.repositories.CidadeRepository;
+import br.com.farmacia.repositories.ClienteRepository;
+import br.com.farmacia.repositories.EnderecoRepository;
+import br.com.farmacia.repositories.EstadoRepository;
+import br.com.farmacia.repositories.ItemPedidoRepository;
+import br.com.farmacia.repositories.PagamentoRepository;
+import br.com.farmacia.repositories.PedidoRepository;
+import br.com.farmacia.repositories.ProdutoRepository;
 
 @SpringBootApplication
 public class VendasFarmaciaApplication implements CommandLineRunner{
