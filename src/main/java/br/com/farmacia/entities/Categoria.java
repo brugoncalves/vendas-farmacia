@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+
 @Entity
 public class Categoria implements Serializable{
 
