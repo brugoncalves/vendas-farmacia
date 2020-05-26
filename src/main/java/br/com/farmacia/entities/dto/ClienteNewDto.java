@@ -2,21 +2,42 @@ package br.com.farmacia.entities.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import br.com.farmacia.services.validations.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty(message = "O preenchimento do nome é obrigatório")
+	@Length(min = 5, max = 150, message = "O nome deve conter entre 5 e 150 caracteres")
 	private String nome;
+	
+	@NotEmpty(message = "O preenchimento do e-mail é obrigatório")
+	@Email(message = "E-mail inválido")
 	private String email;
+	
+	@NotEmpty(message = "O preenchimento do CPF / CNPJ é obrigatório")
 	private String cpfOuCnpj;
+	
 	private Integer tipo;
 	
+	@NotEmpty(message = "O preenchimento do logradouro é obrigatório")
 	private String logradouro;
+	@NotEmpty(message = "O preenchimento do número é obrigatório")
 	private String numero;
 	private String complemento;
 	private String bairro;
+	
+	@NotEmpty(message = "O preenchimento do CEP é obrigatório")
 	private String cep;
 	
+	@NotEmpty(message = "O preenchimento do telefone é obrigatório")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
