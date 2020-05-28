@@ -8,7 +8,9 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import br.com.farmacia.entities.Cliente;
+import br.com.farmacia.services.validations.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -16,11 +18,11 @@ public class ClienteDTO implements Serializable{
 	private Long id;
 	
 	@NotEmpty(message="O preenchimento do nome do cliente é obrigatório")
-	@Length(message = "Email inválido")
+	@Length(min = 5, max = 150, message = "O nome deve conter entre 5 e 150 caracteres")
 	private String nome;
 	
 	@NotEmpty(message = "O preenchimento do endereço de e-mail do cliente é obrigatório")
-	@Email
+	@Email(message = "Email inválido")
 	private String email;
 	
 	public ClienteDTO() {
