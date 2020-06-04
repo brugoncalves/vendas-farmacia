@@ -6,12 +6,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.hateoas.RepresentationModel;
 
 import br.com.farmacia.entities.Cliente;
 import br.com.farmacia.services.validations.ClienteUpdate;
 
 @ClienteUpdate
-public class ClienteDTO implements Serializable{
+public class ClienteDTO extends RepresentationModel<ClienteDTO> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

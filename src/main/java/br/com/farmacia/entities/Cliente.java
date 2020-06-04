@@ -15,12 +15,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.farmacia.entities.enums.TipoCliente;
 
 @Entity
-public class Cliente implements Serializable{
+public class Cliente extends RepresentationModel<Cliente> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

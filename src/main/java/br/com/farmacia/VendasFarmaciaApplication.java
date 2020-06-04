@@ -153,14 +153,7 @@ public class VendasFarmaciaApplication implements CommandLineRunner{
 		ped1.getItens().addAll(Arrays.asList(it1, it2));
 		ped2.getItens().addAll(Arrays.asList(it3));
 		
-		itemRepository.saveAll(Arrays.asList(it1, it2, it3));
-		
-		
-		
-		
-		
-		
-		
+		itemRepository.saveAll(Arrays.asList(it1, it2, it3));			
 		
 	}
 
