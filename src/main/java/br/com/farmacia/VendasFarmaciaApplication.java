@@ -16,7 +16,7 @@ import br.com.farmacia.entities.Estado;
 import br.com.farmacia.entities.ItemPedido;
 import br.com.farmacia.entities.Pagamento;
 import br.com.farmacia.entities.PagamentoComBoleto;
-import br.com.farmacia.entities.PagamentoComCartão;
+import br.com.farmacia.entities.PagamentoComCartao;
 import br.com.farmacia.entities.Pedido;
 import br.com.farmacia.entities.Produto;
 import br.com.farmacia.entities.enums.EstadoPagamento;
@@ -137,7 +137,7 @@ public class VendasFarmaciaApplication implements CommandLineRunner{
 		Pagamento pgto1 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped1, sdf.parse("20/05/2020 00:00"), null);
 		ped1.setPagamento(pgto1);
 		
-		Pagamento pgto2 = new PagamentoComCartão(null, EstadoPagamento.QUITADO, ped2, 4);
+		Pagamento pgto2 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped2, 4);
 		ped2.setPagamento(pgto2);
 		
 		cli1.getPedidos().addAll(Arrays.asList(ped2));

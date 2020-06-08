@@ -2,20 +2,23 @@ package br.com.farmacia.entities;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import br.com.farmacia.entities.enums.EstadoPagamento;
 
 @Entity
-public class PagamentoComCartão extends Pagamento{
+@JsonTypeName("pagamentoComCartao")
+public class PagamentoComCartao extends Pagamento{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Integer numeroDeParcelas;
 	
-	public PagamentoComCartão() {
+	public PagamentoComCartao() {
 		
 	}
 
-	public PagamentoComCartão(Long id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
+	public PagamentoComCartao(Long id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estado, pedido);
 		this.numeroDeParcelas = numeroDeParcelas;
 	}
